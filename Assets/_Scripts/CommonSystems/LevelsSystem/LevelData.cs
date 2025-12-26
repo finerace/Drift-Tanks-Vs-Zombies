@@ -5,7 +5,7 @@ public class LevelData : ScriptableObject
 {
     [SerializeField] private int id;
     [SerializeField] private int name;
-    [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject levelPrefab;
     
     [Space]
     
@@ -24,8 +24,7 @@ public class LevelData : ScriptableObject
     
     public int Id => id;
     public int Name => name;
-    public GameObject Prefab => prefab;
-    
+    public GameObject LevelPrefab => levelPrefab;
     public float CompleteTime => completeTime;
     public int CompleteScore => completeScore;
     public int CompleteMoney => completeMoney;

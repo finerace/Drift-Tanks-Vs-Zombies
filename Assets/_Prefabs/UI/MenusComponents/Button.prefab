@@ -354,6 +354,38 @@ MonoBehaviour:
   upElementsMultiplier: 1.025
   downElementsMultiplier: 0.975
   animationTime: 0.1
+  buttonDown:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 1.1
+    pitchMax: 1.125
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
+  buttonUp:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.4
+    volumeMax: 0.4
+    isLoop: 0
+    pitchMin: 0.8
+    pitchMax: 0.85
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
 --- !u!1 &7049826666557816164
 GameObject:
   m_ObjectHideFlags: 0

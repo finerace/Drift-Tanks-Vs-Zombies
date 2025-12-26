@@ -16,18 +16,23 @@ public class GameDataSaver : MonoBehaviour
     {
         instance = this;
         
-        YandexGame.GetDataEvent += InitSaveData;
+        if(!YandexGame.SDKEnabled)
+            YandexGame.GetDataEvent += InitSaveData;
+        else
+            InitSaveData();
+        
         void InitSaveData()
         {
             savesYg = YandexGame.savesData;
+            isDataLoaded = true;
+            OnDataLoad?.Invoke();
         }
     }
 
     private void Start()
     {
-        YandexGame.LoadProgress();
-        isDataLoaded = true;
-        OnDataLoad?.Invoke();
+        //isDataLoaded = true;
+        //OnDataLoad?.Invoke();
     }
 
     public void SetNewLeveHighScore(int levelId, int newHighScore)
@@ -40,20 +45,20 @@ public class GameDataSaver : MonoBehaviour
         return savesYg.levelsData[levelId].levelHighScore;
     }
 
-    public void SetLevelLockState(int levelId, bool state)
-    {
-        if (savesYg.levelsData[levelId].isLevelUnlocked == state) 
-            return;
-        
-        savesYg.levelsData[levelId].isLevelUnlocked = state;
+    // public void SetLevelLockState(int levelId, bool state)
+    // {
+    //     if (savesYg.levelsData[levelId].isLevelUnlocked == state) 
+    //         return;
+    //     
+    //     savesYg.levelsData[levelId].isLevelUnlocked = state;
+    //
+    //     Save();
+    // }
 
-        Save();
-    }
-
-    public bool GetLockState(int levelId)
-    {
-        return instance.savesYg.levelsData[levelId].isLevelUnlocked;
-    }
+    // public bool GetLockState(int levelId)
+    // {
+    //     return instance.savesYg.levelsData[levelId].isLevelUnlocked;
+    // }
 
     public void SetLevelCompletedState(int levelId,bool state)
     {
@@ -66,6 +71,21 @@ public class GameDataSaver : MonoBehaviour
     public bool IsLevelCompleted(int levelId)
     {
         return instance.savesYg.levelsData[levelId].isLevelCompleted;
+    }
+
+    public int GetGameScore()
+    {
+        if (!YandexGame.SDKEnabled)
+            return 0;
+
+        var resultScore = 0;
+        
+        foreach (var item in YandexGame.savesData.levelsData)
+        {
+            resultScore += item.levelHighScore;
+        }
+
+        return resultScore;
     }
 
     public void Save()

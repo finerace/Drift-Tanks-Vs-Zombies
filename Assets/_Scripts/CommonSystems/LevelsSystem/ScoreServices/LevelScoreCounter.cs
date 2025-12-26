@@ -35,6 +35,11 @@ public class LevelScoreCounter : MonoBehaviour
 
     public int EarnedDonateMoney => earnedDonateMoney;
 
+    public bool IsMoneyDuplicate;
+
+    public int reviveCount;
+    public const int maxReviveCount = 2;
+
     private void Awake()
     {
         instance = this;
@@ -53,6 +58,11 @@ public class LevelScoreCounter : MonoBehaviour
             playerMoney.OnMoneyChange += i => { earnedMoney += i;};
             playerMoney.OnDonateMoneyChange += i => { earnedDonateMoney += i;};
         }
+    }
+
+    private void Start()
+    {
+        LevelsLoadPassService.instance.OnPlayerRevive += () => { reviveCount++;};
     }
 
     private void Update()
@@ -110,6 +120,9 @@ public class LevelScoreCounter : MonoBehaviour
         if (multiplier < 1)
             multiplier = 1;
 
+        if (multiplier > 50)
+            multiplier = 50;
+
         return multiplier;
     }
 
@@ -127,6 +140,9 @@ public class LevelScoreCounter : MonoBehaviour
         killedEnemiesScore = 0;
         tankDriftScoreMultiplier = 1;
         levelCompleteTime = 0;
+
+        IsMoneyDuplicate = false;
+        reviveCount = 0;
     }
 
     public void SetNewCurrentLevelData(LevelData levelData)

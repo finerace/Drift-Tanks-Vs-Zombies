@@ -162,8 +162,6 @@ GameObject:
   - component: {fileID: 4641945469494616993}
   - component: {fileID: 392151046350932547}
   - component: {fileID: 1511536524045979552}
-  - component: {fileID: 5263489883105354891}
-  - component: {fileID: 3424809435387088766}
   m_Layer: 1
   m_Name: TrashCan
   m_TagString: Untagged
@@ -204,8 +202,11 @@ MonoBehaviour:
   graphic: {fileID: 4624543870957420018}
   destroyEffect: {fileID: 3366858194724413768}
   destroyTime: 5
-  joint: {fileID: 0}
   afterDestroyPhysicOnTime: 0
+  mass: 0
+  drag: 0
+  massCenter: {x: 0, y: 0, z: 0}
+  boxCollider: {fileID: 0}
 --- !u!65 &1511536524045979552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -227,40 +228,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &5263489883105354891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7634569742526981759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169f661e48cbd3e46a2cc041010e4c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 392151046350932547}
-  scoreType: 0
-  scoreValue: 5
---- !u!114 &3424809435387088766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7634569742526981759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e61822c608cc4e8bc3419a5aa5fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetHealth: {fileID: 392151046350932547}
-  moneyAddChance: 0
-  moneyAdd: 0
-  donateMoneyAddChance: 0
-  donateMoneyAdd: 0
-  xpAddChance: 1000
-  XpAdd: 5
 --- !u!1 &8013703710203660447
 GameObject:
   m_ObjectHideFlags: 0

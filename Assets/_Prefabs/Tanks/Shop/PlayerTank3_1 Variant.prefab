@@ -58,6 +58,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1003006307846610083, guid: bb83a35dbc3a63b47a449e0ccd92d609,
+        type: 3}
+      propertyPath: tankMain
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049173023396312511, guid: bb83a35dbc3a63b47a449e0ccd92d609,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2560162267904888661, guid: bb83a35dbc3a63b47a449e0ccd92d609,
         type: 3}
       propertyPath: playerTank

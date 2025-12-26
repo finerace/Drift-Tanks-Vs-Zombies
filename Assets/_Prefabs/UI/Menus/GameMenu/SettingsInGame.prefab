@@ -83,6 +83,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 607562664561398082, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071345619623548426, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071345619623548426, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402304227236868060, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2640809105123382906, guid: 03fe088f6d50b6343a029383509f17cf,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -93,15 +113,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3312786240851794397, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312786240851794397, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312786240851794397, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3491151941183141899, guid: 03fe088f6d50b6343a029383509f17cf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.6000977
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231448561442026689, guid: 03fe088f6d50b6343a029383509f17cf,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 30.784912
       objectReference: {fileID: 0}
     - target: {fileID: 5170192057731729784, guid: 03fe088f6d50b6343a029383509f17cf,
         type: 3}
@@ -203,6 +233,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5615001959012270013, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615001959012270013, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5646283491207536156, guid: 03fe088f6d50b6343a029383509f17cf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -248,6 +288,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7341914207562070636, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341914207562070636, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341914207562070636, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8496040991155724905, guid: 03fe088f6d50b6343a029383509f17cf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -267,6 +322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -65.17871
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101985977899041201, guid: 03fe088f6d50b6343a029383509f17cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

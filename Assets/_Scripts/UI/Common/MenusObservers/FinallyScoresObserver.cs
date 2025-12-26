@@ -37,6 +37,12 @@ public class FinallyScoresObserver : MonoBehaviour
     private void Start()
     {
         scoreCounter = LevelScoreCounter.instance;
+        LevelsLoadPassService.instance.OnScoreMultiplie += SetScoreMultiplier;
+        
+        void SetScoreMultiplier()
+        {
+            finallyScore.text = $"{(int)(scoreCounter.GetCompletedScore() * 1.1f)}";
+        }
     }
 
     private IEnumerator ScoresAnimation()

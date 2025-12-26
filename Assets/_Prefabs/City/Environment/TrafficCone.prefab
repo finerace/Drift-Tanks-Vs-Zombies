@@ -4916,8 +4916,6 @@ GameObject:
   - component: {fileID: 6168964042684630052}
   - component: {fileID: 6467957085661730123}
   - component: {fileID: 5835527180184357394}
-  - component: {fileID: 8367677976031810725}
-  - component: {fileID: -5645290965335993030}
   m_Layer: 1
   m_Name: TrafficCone
   m_TagString: Untagged
@@ -4958,8 +4956,11 @@ MonoBehaviour:
   graphic: {fileID: 2589134885784863118}
   destroyEffect: {fileID: 3584444200189205387}
   destroyTime: 5
-  joint: {fileID: 0}
   afterDestroyPhysicOnTime: 0
+  mass: 0
+  drag: 0
+  massCenter: {x: 0, y: 0, z: 0}
+  boxCollider: {fileID: 0}
 --- !u!65 &5835527180184357394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4981,40 +4982,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &8367677976031810725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8737969005662113342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169f661e48cbd3e46a2cc041010e4c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 6467957085661730123}
-  scoreType: 0
-  scoreValue: 5
---- !u!114 &-5645290965335993030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8737969005662113342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e61822c608cc4e8bc3419a5aa5fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetHealth: {fileID: 6467957085661730123}
-  moneyAddChance: 0
-  moneyAdd: 0
-  donateMoneyAddChance: 0
-  donateMoneyAdd: 0
-  xpAddChance: 1000
-  XpAdd: 5
 --- !u!1 &9164507501598581673
 GameObject:
   m_ObjectHideFlags: 0

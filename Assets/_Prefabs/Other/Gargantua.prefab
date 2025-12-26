@@ -360,11 +360,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7844297399249159596}
   - component: {fileID: 7062085609413561400}
-  - component: {fileID: 8285834353201438887}
   - component: {fileID: 4947316919813270951}
   - component: {fileID: 6325904889445526397}
-  - component: {fileID: 2113704334443443772}
-  - component: {fileID: 2954175440505603528}
+  - component: {fileID: 132686316592433678}
   m_Layer: 6
   m_Name: Gargantua
   m_TagString: Untagged
@@ -381,7 +379,7 @@ Transform:
   m_GameObject: {fileID: 5776181545850555967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710695, z: -0, w: -0.7071066}
-  m_LocalPosition: {x: 4.44, y: -48.934, z: -7.902}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -411,33 +409,6 @@ CapsuleCollider:
   m_Height: 2.6389406
   m_Direction: 1
   m_Center: {x: -0.050000023, y: 1.2914699, z: 0.21380474}
---- !u!54 &8285834353201438887
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776181545850555967}
-  serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 2
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &4947316919813270951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,18 +421,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6adfeedf27761f64f9fe4a7040fcd0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 125
-  maxHealth: 125
+  health: 165
+  maxHealth: 165
   zombieT: {fileID: 7844297399249159596}
-  zombieRb: {fileID: 8285834353201438887}
+  zombieRb: {fileID: 0}
   damage: 10
   attackDistance: 3
   attackCooldown: 1.5
   speed: 7
   rotationSpeed: 2
   targetT: {fileID: 0}
-  lookTargetDistance: 15
+  lookTargetDistance: 5
   lookTargetDotFov: 0.5
+  isGargantua: 1
+  collider: {fileID: 7062085609413561400}
+  died:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: dee56e35355b06945bc5fce3e8cb2d52, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 7844297399249159596}
+    priority: 2
+    volumeMin: 0.968
+    volumeMax: 1
+    isLoop: 0
+    pitchMin: 0.91
+    pitchMax: 1.04
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 32
+    maxDistance: 64
 --- !u!114 &6325904889445526397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,43 +464,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieAI: {fileID: 4947316919813270951}
-  zombieRb: {fileID: 8285834353201438887}
   zombieMeshAnimator: {fileID: 2599618952272645876}
-  toFlyModOnPower: 255
---- !u!114 &2113704334443443772
-MonoBehaviour:
+--- !u!65 &132686316592433678
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5776181545850555967}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169f661e48cbd3e46a2cc041010e4c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 4947316919813270951}
-  scoreType: 1
-  scoreValue: 20
---- !u!114 &2954175440505603528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776181545850555967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e61822c608cc4e8bc3419a5aa5fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetHealth: {fileID: 4947316919813270951}
-  moneyAddChance: 250
-  moneyAdd: 5
-  donateMoneyAddChance: 1
-  donateMoneyAdd: 1
-  xpAddChance: 1000
-  XpAdd: 25
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 3.0241694, z: 2.5}
+  m_Center: {x: 0, y: 1.0120865, z: -0}
 --- !u!1 &6077370493869124664
 GameObject:
   m_ObjectHideFlags: 0

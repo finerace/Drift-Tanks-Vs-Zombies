@@ -21,6 +21,8 @@ public class OnDieBonusAdder : MonoBehaviour
 
     private void Start()
     {
+        return;
+        
         playerMoneyXpService = PlayerMoneyXpService.instance;
         
         if(targetHealth != null)

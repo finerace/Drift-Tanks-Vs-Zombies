@@ -7,7 +7,8 @@ using YG;
 public class LevelsLoadPassService : MonoBehaviour
 {
     public static LevelsLoadPassService instance;
-    
+
+    [SerializeField] private LevelData startLevel;
     [SerializeField] private GlobalGameEvents globalGameEvents;
     
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -26,6 +27,7 @@ public class LevelsLoadPassService : MonoBehaviour
     
     [SerializeField] private MenuSystem mainMenu;
     [SerializeField] private MenuSystem gameMenu;
+    [SerializeField] private GameObject loadMenu;
     
     [Space]
     
@@ -37,8 +39,15 @@ public class LevelsLoadPassService : MonoBehaviour
 
     private GameDataSaver gameDataSaver;
 
+    public LevelData CurrentLevelData => currentLevelData;
+
+    public event Action OnScoreMultiplie;
     public event Action OnLevelLoad;
 
+    public event Action OnPlayerRevive;
+
+    private int adCount;
+    
     private void Awake()
     {
         instance = this;
@@ -47,61 +56,100 @@ public class LevelsLoadPassService : MonoBehaviour
     private void Start()
     {
         gameDataSaver = GameDataSaver.instance;
+
+        if (!YandexGame.SDKEnabled)
+        {
+            YandexGame.GetDataEvent += () => {if(YandexGame.savesData.trainingStage <= -2)
+                LoadLevel(startLevel);};
+        }
+        else if(YandexGame.savesData.trainingStage <= -2)
+            LoadLevel(startLevel);
     }
 
     public void LoadLevel(LevelData levelData)
     {
-        if(currentLevel != null)
-            Destroy(currentLevel);
+        gameMenu.gameObject.SetActive(false);
+        mainMenu.gameObject.SetActive(false);
+        loadMenu.SetActive(true);
 
-        SpawnPlayer();
-        void SpawnPlayer()
+        StartCoroutine(LOAD());
+        IEnumerator LOAD()
         {
-            var currentTankAllData = TanksShopService.instance.GetCurrentTankData();
-
-            playerTankT = 
-                Instantiate(currentTankAllData.tankShopData.Tank, levelSpawnPoint.position, levelSpawnPoint.rotation).transform;
-
-            playerTankT.gameObject.GetComponent<PlayerTank>()
-                .SetTankCharacteristics(currentTankAllData.tankShopData,currentTankAllData.tankSaveData);
+            yield return null;
+            yield return null;
+            yield return null;
             
-            if(!playerTankT.gameObject.activeSelf)
-                playerTankT.gameObject.SetActive(true);
-        }
-        
-        currentLevelData = levelData;
-        currentLevel = Instantiate(currentLevelData.Prefab, levelSpawnPoint.position,Quaternion.identity);
+            if (currentLevel != null)
+                Destroy(currentLevel);
 
-        menuRoom.gameObject.SetActive(false);
-        virtualCamera.gameObject.SetActive(true);
-        virtualCamera.Follow = playerTankT;
-        virtualCamera.LookAt = playerTankT;
-        
-        levelScoreCounter.ResetCounters();
-        levelScoreCounter.SetNewCurrentLevelData(currentLevelData);
-        
-        ChangeMenusActivity(false);
-        
-        globalGameEvents.SetLevelStartState(true);
-        
-        SetPlayerDieAlgorithm();
-        void SetPlayerDieAlgorithm()
-        {
-            playerTankT.gameObject.GetComponent<PlayerTank>().OnDie += () =>
+            SpawnPlayer();
+
+            void SpawnPlayer()
             {
-                dieCoroutine = StartCoroutine(OnPlayerDie());
-            };
+                var currentTankAllData = TanksShopService.instance.GetCurrentTankData();
 
-            IEnumerator OnPlayerDie()
-            {
-                yield return new WaitForSeconds(3);
+                playerTankT =
+                    Instantiate(currentTankAllData.tankShopData.Tank, levelSpawnPoint.position,
+                        levelSpawnPoint.rotation).transform;
 
-                gameMenu.isBackActionLock = true;
-                StopLevel();
+                playerTankT.gameObject.GetComponent<PlayerTank>()
+                    .SetTankCharacteristics(currentTankAllData.tankShopData, currentTankAllData.tankSaveData);
+
+                if (!playerTankT.gameObject.activeSelf)
+                    playerTankT.gameObject.SetActive(true);
             }
+
+            currentLevelData = levelData;
+            currentLevel = Instantiate(currentLevelData.LevelPrefab);
+            
+            if(currentLevel.TryGetComponent<LevelGenerator>(out LevelGenerator gen))
+                gen.GenerateLevel();
+
+            menuRoom.gameObject.SetActive(false);
+            virtualCamera.gameObject.SetActive(true);
+            virtualCamera.Follow = playerTankT;
+            virtualCamera.LookAt = playerTankT;
+
+            levelScoreCounter.ResetCounters();
+            levelScoreCounter.SetNewCurrentLevelData(currentLevelData);
+
+            ChangeMenusActivity(false);
+
+            globalGameEvents.SetLevelStartState(true);
+
+            SetPlayerDieAlgorithm();
+
+            void SetPlayerDieAlgorithm()
+            {
+                playerTankT.gameObject.GetComponent<PlayerTank>().OnDie += () =>
+                {
+                    dieCoroutine = StartCoroutine(OnPlayerDie());
+                };
+
+                IEnumerator OnPlayerDie()
+                {
+                    yield return new WaitForSeconds(3);
+
+                    gameMenu.isBackActionLock = true;
+                    StopLevel();
+                }
+            }
+
+            loadMenu.SetActive(false);
+            
+            OnLevelLoad?.Invoke();
         }
-        
-        OnLevelLoad?.Invoke();
+
+        adCount++;
+
+        if (adCount >= 2)
+        {
+            adCount = 0;
+            
+            if(YandexGame.SDKEnabled)
+                YandexGame.FullscreenShow();
+        }
+
     }
 
     public void StopLevel()
@@ -139,13 +187,12 @@ public class LevelsLoadPassService : MonoBehaviour
     {
         gameDataSaver.Save();
 
-
         currentLevelData = null;
         if(currentLevel != null)
             Destroy(currentLevel);
 
         isCurrentLevelComplete = false;
-        playerTankT.gameObject.SetActive(false);
+        Destroy(playerTankT.gameObject);
 
         ChangeMenusActivity(true);
         gameMenu.isBackActionLock = false;
@@ -209,6 +256,20 @@ public class LevelsLoadPassService : MonoBehaviour
             
             if (!isLevelCompleted)
                 gameDataSaver.SetLevelCompletedState(currentLevelData.Id, true);
+
+            if (YandexGame.initializedLB && YandexGame.auth)
+            {
+                var currentGameScore = gameDataSaver.GetGameScore();
+
+                if (YandexGame.savesData.highestGameScore < currentGameScore)
+                {
+                    YandexGame.savesData.highestGameScore = currentGameScore;
+                    
+                    YandexGame.NewLeaderboardScores("HighestScore",currentGameScore);
+                }
+                
+            }
+                
         }
         
         gameDataSaver.Save();
@@ -216,6 +277,45 @@ public class LevelsLoadPassService : MonoBehaviour
         DisableDieCoroutine();
     }
 
+    public void Continue()
+    {
+        var nextLevelData = LevelDataSTATIC.GetLevelData(currentLevelData.Id);
+        
+        UnloadLevel();
+        LoadLevel(nextLevelData);
+    }
+
+    public void RevivePlayer()
+    {
+        playerTankT.GetComponent<PlayerTank>().Reset();
+        var menu = FindObjectOfType<MenuSystem>();
+
+        menu.isBackActionLock = false;
+        menu.Back();
+        
+        DisableDieCoroutine();
+
+        StartCoroutine(TimeFix());
+        IEnumerator TimeFix()
+        {
+            yield return null;
+            Time.timeScale = 1;
+        }
+        
+        OnPlayerRevive?.Invoke();
+    }
+
+    public void ScoreMultiplier()
+    {
+        var oldHighScore = gameDataSaver.GetLevelHighScore(currentLevelData.Id);
+        var currentScore = levelScoreCounter.GetCompletedScore() * 1.1f; 
+            
+        if(currentScore > oldHighScore)
+            gameDataSaver.SetNewLeveHighScore(currentLevelData.Id,(int)currentScore);
+        
+        OnScoreMultiplie?.Invoke();
+    }
+    
     private void DisableDieCoroutine()
     {
         if (dieCoroutine != null)

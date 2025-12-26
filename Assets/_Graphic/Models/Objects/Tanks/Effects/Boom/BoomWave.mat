@@ -157,7 +157,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _alpha: -1
+    - _alpha: -0.9999991
     - _alphaClip: 0
     - _set1: 2.88
     - _set2: 1

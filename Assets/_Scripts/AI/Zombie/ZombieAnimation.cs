@@ -5,7 +5,6 @@ public class ZombieAnimation : MonoBehaviour
 {
 
     [SerializeField] private ZombieAI zombieAI;
-    [SerializeField] private Rigidbody zombieRb;
     [SerializeField] private Animator zombieMeshAnimator;
     [SerializeField] private float toFlyModOnPower = 15;
     
@@ -33,8 +32,11 @@ public class ZombieAnimation : MonoBehaviour
     {
         if(!zombieMeshAnimator.gameObject.activeSelf)
             return;
-            
-        var isFly = zombieRb.velocity.magnitude >= toFlyModOnPower;
+        
+        var isFly = false;
+        
+        if(zombieAI.zombieRb != null)
+            isFly = zombieAI.zombieRb.velocity.magnitude >= toFlyModOnPower;
 
         if(zombieMeshAnimator.GetBool(IsAnnoyed) != isAnnoyed)
             zombieMeshAnimator.SetBool(IsAnnoyed,isAnnoyed);

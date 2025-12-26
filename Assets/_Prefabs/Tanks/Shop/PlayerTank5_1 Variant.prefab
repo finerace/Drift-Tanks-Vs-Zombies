@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: tankRb
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1420993664804182820, guid: bee5d3ca2e16305498e35c5f7671019f,
+        type: 3}
+      propertyPath: tankMain
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3818675406860325704, guid: bee5d3ca2e16305498e35c5f7671019f,
         type: 3}
       propertyPath: tankRb
@@ -32,6 +37,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerTank5_1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522816050719922631, guid: bee5d3ca2e16305498e35c5f7671019f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7584314193790628385, guid: bee5d3ca2e16305498e35c5f7671019f,
         type: 3}

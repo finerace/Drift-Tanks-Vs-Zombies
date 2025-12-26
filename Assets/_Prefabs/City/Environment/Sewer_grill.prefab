@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8839979282704811069}
   - component: {fileID: 4513021667969988594}
   - component: {fileID: 439601017169254547}
+  - component: {fileID: 1283335947533521875}
   m_Layer: 0
   m_Name: Sewer_grill
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1283335947533521875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740112426788482278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88014a85bee0e64b9165b445b3d88ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

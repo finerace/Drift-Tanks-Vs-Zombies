@@ -8,8 +8,16 @@ public class MobileObjectsSwap : MonoBehaviour
 
     private void OnEnable()
     {
-        var isMobile = YandexGame.EnvironmentData.isMobile;
-        pcObject.SetActive(!isMobile);
-        mobileObject.SetActive(isMobile);
+        if (YandexGame.SDKEnabled)
+            init();
+        else
+            YandexGame.GetDataEvent += init;
+
+        void init()
+        {
+            var isMobile = YandexGame.EnvironmentData.isMobile;
+            pcObject.SetActive(!isMobile);
+            mobileObject.SetActive(isMobile);
+        }
     }
 }

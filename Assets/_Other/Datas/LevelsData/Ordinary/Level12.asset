@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223eea632e9cae3469842e799ff4e3e5, type: 3}
+  m_Name: Level12
+  m_EditorClassIdentifier: 
+  id: 11
+  name: 67
+  levelPrefab: {fileID: 8672650349972564865, guid: 26e46be79d061e64da41c25c7fb3d3be,
+    type: 3}
+  completeTime: 45
+  completeScore: 4000
+  completeMoney: 500
+  completeDonateMoney: 5
+  completeXp: 6000
+  oneStarScore: 9000
+  twoStarScore: 13000
+  threeStarScore: 18000

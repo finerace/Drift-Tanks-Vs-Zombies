@@ -28,9 +28,19 @@ PrefabInstance:
       propertyPath: tankRb
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3363630019951297917, guid: 69914352748100d4688b196eb4134ffe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3544494408784358908, guid: 69914352748100d4688b196eb4134ffe,
         type: 3}
       propertyPath: tankRb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479703923947098670, guid: 69914352748100d4688b196eb4134ffe,
+        type: 3}
+      propertyPath: tankMain
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5200577912014129771, guid: 69914352748100d4688b196eb4134ffe,

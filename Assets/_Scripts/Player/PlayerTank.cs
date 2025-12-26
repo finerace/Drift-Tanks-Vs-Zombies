@@ -48,6 +48,8 @@ public class PlayerTank : HealthBase, IObserveNum
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private bool isFly;
     [SerializeField] private float groundCheckDistance = 0.2f;
+
+    public static PlayerTank instance;
     
     private bool isDriftModOn;
     
@@ -68,6 +70,11 @@ public class PlayerTank : HealthBase, IObserveNum
 
     public Transform TankT => tankT;
     public Rigidbody TankRb => tankRb;
+
+    public PlayerTankCombat PlayerTankCombat => playerTankCombat;
+    public TankEffects TankEffects => tankEffects;
+
+    public event Action OnTankHit;
 
     public float Fuel
     {
@@ -91,6 +98,11 @@ public class PlayerTank : HealthBase, IObserveNum
     public float MaxFuel => maxFuel;
     
     public bool IsFly => isFly;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -292,7 +304,7 @@ public class PlayerTank : HealthBase, IObserveNum
             }
         }
         
-        //EatFuel();
+        EatFuel();
         void EatFuel()
         {
             if (fuel <= 0)
@@ -365,6 +377,11 @@ public class PlayerTank : HealthBase, IObserveNum
             default:
                 throw new Exception("This num id is not exist!");
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        OnTankHit?.Invoke();
     }
 
     public (float min, float max) GetBarParam(int id)

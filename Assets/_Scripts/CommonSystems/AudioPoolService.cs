@@ -12,7 +12,9 @@ public class AudioPoolService : MonoBehaviour
     [SerializeField] private float spreadEffect = 0.35f;
     private int realMaxAudioSources;
     private Dictionary<AudioSource, bool> audioPool = new Dictionary<AudioSource, bool>();
-
+    private int freeAudioSources;
+    private int badSources;
+    
     private void Awake()
     {
         audioPoolServiceInstance = this;
@@ -20,9 +22,30 @@ public class AudioPoolService : MonoBehaviour
         SetNewMaxAudioSourcesCount(startMaxAudioSources);
     }
 
+    private void Start()
+    {
+        GlobalGameEvents.instance.levelStartChangeState += b =>
+        {
+            SetNewMaxAudioSourcesCount(0);
+            SetNewMaxAudioSourcesCount(48);
+        };
+    }
+
     private void Update()
     {
-        FreeUsedAudioSources();        
+        FreeUsedAudioSources();
+
+        foreach (var item in audioPool)
+        {
+            freeAudioSources = 0;
+            badSources = 0;
+            
+            if (item.Value)
+                freeAudioSources++;
+            else
+                badSources++;
+        }
+        
     }
 
     private void FreeUsedAudioSources()
@@ -34,7 +57,7 @@ public class AudioPoolService : MonoBehaviour
             var isAudioSourceNotFree = !audioPool[audioSource];
             
             if(isAudioSourceNotFree)
-                if ((!audioSource.isPlaying && !audioSource.mute))
+                if (!audioSource.isPlaying && !audioSource.mute)
                     resultFreeSources.Add(audioSource);
         }
 
@@ -44,6 +67,7 @@ public class AudioPoolService : MonoBehaviour
             
             audioSource.transform.parent = null;
             audioSource.volume = 0;
+            audioSource.Stop();
         }
     }
     

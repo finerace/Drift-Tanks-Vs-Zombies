@@ -5,9 +5,7 @@ public class GargantuaAnimation : MonoBehaviour
 {
 
     [SerializeField] private ZombieAI zombieAI;
-    [SerializeField] private Rigidbody zombieRb;
     [SerializeField] private Animator zombieMeshAnimator;
-    [SerializeField] private float toFlyModOnPower = 15;
     
     private static readonly int IsAnnoyed = Animator.StringToHash("IsAnnoyed");
     private static readonly int IsAttacking = Animator.StringToHash("IsAttack");

@@ -9,6 +9,8 @@ public class OnDieScoreAdder : MonoBehaviour
 
     private void Start()
     {
+        return;
+        
         target.OnDie += AddScore;
 
         void AddScore()

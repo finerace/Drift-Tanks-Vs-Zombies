@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223eea632e9cae3469842e799ff4e3e5, type: 3}
+  m_Name: Parkour4
+  m_EditorClassIdentifier: 
+  id: 21
+  name: 80
+  levelPrefab: {fileID: 3862182225605275894, guid: b42dca85766b9fe45a5ddfb6c8a9545f,
+    type: 3}
+  completeTime: 60
+  completeScore: 6000
+  completeMoney: 500
+  completeDonateMoney: 1
+  completeXp: 5000
+  oneStarScore: 8000
+  twoStarScore: 12000
+  threeStarScore: 16000

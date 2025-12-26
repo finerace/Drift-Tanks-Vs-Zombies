@@ -8,6 +8,8 @@ public class GlobalGameEvents : MonoBehaviour
     [SerializeField] private bool isLevelStarted;
     public event Action<bool> levelStartChangeState;
     
+    public event Action<bool> trainingStartChangeState;
+    
     private LevelData currentLevelData;
     public LevelData CurrentLevelData => currentLevelData;
     
@@ -17,6 +19,12 @@ public class GlobalGameEvents : MonoBehaviour
         levelStartChangeState?.Invoke(isLevelStarted);
     }
 
+    public void SetTrainingStartState(bool state)
+    {
+        trainingStartChangeState?.Invoke(state);
+    }
+
+    
     public void Awake()
     {
         instance = this;

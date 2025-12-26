@@ -26,7 +26,7 @@ public class ObserverDefault : MonoBehaviour
             SetNum();
         else 
             GameDataSaver.instance.OnDataLoad += SetNum;
-
+        
         observeNum.OnObserveNumChange += (int id, int difference) =>
         {
             var num = observeNum.GetNum(observedNumId);

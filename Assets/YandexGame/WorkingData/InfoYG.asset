@@ -14,25 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopes: 1
   playerPhotoSize: 0
+  autoGameReadyAPI: 0
   playerInfoSimulation:
-    authorized: 1
+    authorized: 0
     isMobile: 0
-    language: ru
-    name: Player this
+    language: tr
+    name: FineRace
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
   AdWhenLoadingScene: 0
   showFirstAd: 1
+  rewardedAfterClosing: 1
   adDisplayCalls: 0
   fullscreenAdInterval: 60
   durationOfAdSimulation: 0.5
+  loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 1
   flush: 0
   localSaveSync: 1
   saveCloudInterval: 15
   saveOnQuitGame: 1
+  quitGameParameters:
+    objectName: YandexGame
+    methodName: _SaveProgress
   leaderboardEnable: 1
+  saveScoreAnonymousPlayers: 1
   leaderboardSimulation:
   - technoName: advanced
     entries: 'Test LeaderBoard
@@ -173,7 +180,7 @@ MonoBehaviour:
     thisPlayer:
       rank: 2
       score: 10
-  LocalizationEnable: 0
+  LocalizationEnable: 1
   callingLanguageCheck: 1
   translateMethod: 0
   domainAutoLocalization: com
@@ -181,9 +188,9 @@ MonoBehaviour:
     format: 0
     name: TranslateCSV
   languages:
-    ru: 1
-    en: 1
-    tr: 1
+    ru: 0
+    en: 0
+    tr: 0
     az: 0
     be: 0
     he: 0
@@ -209,6 +216,35 @@ MonoBehaviour:
     de: 0
     hi: 0
   fonts:
+    defaultFont: []
+    ru: []
+    en: []
+    tr: []
+    az: []
+    be: []
+    he: []
+    hy: []
+    ka: []
+    et: []
+    fr: []
+    kk: []
+    ky: []
+    lt: []
+    lv: []
+    ro: []
+    tg: []
+    tk: []
+    uk: []
+    uz: []
+    es: []
+    pt: []
+    ar: []
+    id: []
+    ja: []
+    it: []
+    de: []
+    hi: []
+  fontsTMP:
     defaultFont: []
     ru: []
     en: []
@@ -266,23 +302,23 @@ MonoBehaviour:
     de: 
     hi: 
   purshasesSimulation:
-  - id: gun
-    title: Gun
-    description: Product - Gun
+  - id: coins
+    title: Money
+    description: You collect money
     imageURI: https://justplaygames.ru/public/Paymant1.png
-    priceValue: 5
+    price: 
+    priceValue: 15
+    priceCurrencyCode: 
+    priceCurrencyImage: 
     consumed: 1
-  - id: armor
-    title: Armor
-    description: Product - Armor
+  - id: crystals
+    title: Donate Money
+    description: You collect donate money
     imageURI: https://justplaygames.ru/public/Paymant2.png
-    priceValue: 10
-    consumed: 1
-  - id: grenade
-    title: Grenade
-    description: Product - Grenade
-    imageURI: https://justplaygames.ru/public/Paymant3.png
-    priceValue: 30
+    price: 
+    priceValue: 20
+    priceCurrencyCode: 
+    priceCurrencyImage: 
     consumed: 1
   metricaEnable: 0
   metricaCounterID: 0
@@ -292,5 +328,5 @@ MonoBehaviour:
   backgroundImageFormat: 3
   pixelRatioEnable: 1
   pixelRatioValue: 1
-  SDKStartDelay: 0
+  loadGameRun: 0
   staticRBTInGame: 0

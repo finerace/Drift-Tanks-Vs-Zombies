@@ -40,7 +40,8 @@ public class PlayerMoneyXpService : MonoBehaviour,IObserveNum
         }
     }
     public event Action<int> OnDonateMoneyChange;
-
+    public event Action OnLevelGained;
+    public event Action OnMoneyDuplicate;
     
     public int PlayerXp
     {
@@ -67,6 +68,11 @@ public class PlayerMoneyXpService : MonoBehaviour,IObserveNum
     private void Awake()
     {
         instance = this;
+        
+        YandexGame.PurchaseSuccessEvent += SuccessPurchased;
+        
+        YandexGame.RewardVideoEvent += SuccessRewardAd;
+        
         InitObserveNumChangesEvents();
         void InitObserveNumChangesEvents()
         {
@@ -174,7 +180,89 @@ public class PlayerMoneyXpService : MonoBehaviour,IObserveNum
                 throw new ArgumentException("This BarParam Id is not exist!");
         }
     }
-
+    
     public event Action OnBarParamChange;
     public event Action<int,int> OnObserveNumChange;
+
+    public void GetLevelReward()
+    {
+        var toRewardedLvl = GetCurrentLevel() - YandexGame.savesData.gainedLvl;
+        YandexGame.savesData.gainedLvl = GetCurrentLevel();
+
+        for (int i = 0; i < toRewardedLvl; i++)
+        {
+            var result = 0;
+            
+            result = 25 * ((GetCurrentLevel() - i) / 8);
+            
+            if (result <= 0)
+                result = 25;
+
+            PlayerMoney += result;
+        }
+
+        YandexGame.SaveProgress();
+        OnLevelGained?.Invoke();
+    }
+
+    public bool IsLevelRewardNotGained()
+    {
+        return (GetCurrentLevel() - YandexGame.savesData.gainedLvl) > 0;
+    }
+    
+    private void SuccessPurchased(string id)
+    {
+        if (id == "coins")
+            PlayerMoney += 5000;
+        else if (id == "crystals")
+            PlayerDonateMoney += 100;
+
+        YandexGame.SaveProgress();
+    }
+
+    private void SuccessRewardAd(int id)
+    {
+        switch (id)
+        {
+            case 0:
+            {
+                LevelsLoadPassService.instance.RevivePlayer();
+                break;
+            }
+
+            case 1:
+            {
+                var scores = LevelScoreCounter.instance; 
+                
+                var coins = scores.EarnedMoney;
+                var coinsD = scores.EarnedDonateMoney;
+
+                scores.IsMoneyDuplicate = true;
+                
+                PlayerMoney += coins;
+                PlayerDonateMoney += coinsD;
+                
+                YandexGame.SaveProgress();
+                
+                OnMoneyDuplicate?.Invoke();
+                
+                break;
+            }
+            
+            case 2:
+            {
+                LevelsLoadPassService.instance.ScoreMultiplier();
+                
+                YandexGame.SaveProgress();
+                break;
+            }
+            
+        }
+    }
+
+    private void FF()
+    {
+        
+    }
+    
 }

@@ -758,7 +758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5631706005629149402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   staticTextAdaptableForms:
   - targetTexts:
     - {fileID: 914792023694226528}
-    languageDataTextId: 1
+    languageDataTextId: 131
   - targetTexts:
     - {fileID: 8298723424320098436}
     languageDataTextId: 2
@@ -1321,7 +1321,7 @@ PrefabInstance:
     - target: {fileID: 5209271298250080120, guid: 2d2bd4fc86947814fb90dce1214495a2,
         type: 3}
       propertyPath: m_fontSize
-      value: 38.45
+      value: 38.4
       objectReference: {fileID: 0}
     - target: {fileID: 5969701382016863863, guid: 2d2bd4fc86947814fb90dce1214495a2,
         type: 3}
@@ -1738,6 +1738,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035032815229157449, guid: 55a408dd37569db4abb2a8a26de7425b,
+        type: 3}
+      propertyPath: isEnabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2689,7 +2694,7 @@ PrefabInstance:
     - target: {fileID: 5209271298250080120, guid: 2d2bd4fc86947814fb90dce1214495a2,
         type: 3}
       propertyPath: m_fontSize
-      value: 34.6
+      value: 34.55
       objectReference: {fileID: 0}
     - target: {fileID: 5969701382016863863, guid: 2d2bd4fc86947814fb90dce1214495a2,
         type: 3}

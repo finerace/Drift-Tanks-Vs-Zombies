@@ -98,10 +98,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7407036580624060030, guid: 9944d0fe1be907440bea1428e4729019,
+        type: 3}
+      propertyPath: tankMain
+      value: 
+      objectReference: {fileID: 40, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8031750629751343768, guid: 9944d0fe1be907440bea1428e4729019,
         type: 3}
       propertyPath: m_Name
       value: PlayerTank6_1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8098466892843330195, guid: 9944d0fe1be907440bea1428e4729019,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3060340039376798032, guid: 9944d0fe1be907440bea1428e4729019, type: 3}

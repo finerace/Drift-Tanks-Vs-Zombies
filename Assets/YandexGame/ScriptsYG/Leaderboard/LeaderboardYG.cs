@@ -8,7 +8,7 @@ using YG.Utils.Lang;
 
 namespace YG
 {
-    [HelpURL("https://www.notion.so/PluginYG-d457b23eee604b7aa6076116aab647ed#7f075606f6c24091926fa3ad7ab59d10")]
+    [DefaultExecutionOrder(-101), HelpURL("https://www.notion.so/PluginYG-d457b23eee604b7aa6076116aab647ed#7f075606f6c24091926fa3ad7ab59d10")]
     public class LeaderboardYG : MonoBehaviour
     {
         [Tooltip("Техническое название соревновательной таблицы")]
@@ -63,7 +63,7 @@ namespace YG
         private string photoSize;
         private LBPlayerDataYG[] players = new LBPlayerDataYG[0];
 
-        void Awake()
+        void Start()
         {
             if (playerPhoto == PlayerPhoto.NonePhoto)
                 photoSize = "nonePhoto";
@@ -119,7 +119,7 @@ namespace YG
                 }
                 else
                 {
-                    DestroyPurchasesList();
+                    DestroyLBList();
 
                     if (lb.entries == "no data")
                     {
@@ -145,7 +145,7 @@ namespace YG
             }
         }
 
-        private void DestroyPurchasesList()
+        private void DestroyLBList()
         {
             int childCount = rootSpawnPlayersData.childCount;
             for (int i = childCount - 1; i >= 0; i--)

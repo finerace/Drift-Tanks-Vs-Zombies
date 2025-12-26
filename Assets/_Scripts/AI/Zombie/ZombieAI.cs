@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class ZombieAI : HealthBase
 {
     [SerializeField] private Transform zombieT;
-    [SerializeField] private Rigidbody zombieRb;
+    [SerializeField] public Rigidbody zombieRb;
 
     [Space] 
     
@@ -23,13 +23,18 @@ public class ZombieAI : HealthBase
     [SerializeField] private float rotationSpeed;
 
     private bool isAnnoyed = false;
-    
+
     [Space]
     
     [SerializeField] private Transform targetT;
     [SerializeField] private float lookTargetDistance;
     [SerializeField] private float lookTargetDotFov;
 
+    [SerializeField] private bool isGargantua;
+    [SerializeField] private Collider collider;
+
+    [SerializeField] private AudioCastData died;
+    
     public bool IsAnnoyed => isAnnoyed;
     public bool IsDie => isDie;
 
@@ -43,8 +48,7 @@ public class ZombieAI : HealthBase
         SetStartTarget();
         void SetStartTarget()
         {
-            if (targetT == null)
-                targetT = FindObjectOfType<PlayerTank>().transform;
+            targetT = PlayerTank.instance.transform;
         }
         
         attackCooldownTimer = attackCooldown;
@@ -72,6 +76,7 @@ public class ZombieAI : HealthBase
                 if (Vector3.Dot(zombieT.forward, toTargetDirection) >= lookTargetDotFov)
                 {
                     isAnnoyed = true;
+                    AddRb();
                     
                     onAnnoyedChange?.Invoke();
                 }
@@ -84,10 +89,20 @@ public class ZombieAI : HealthBase
                 return;
             
             isAnnoyed = true;
+            AddRb();
+            
             onAnnoyedChange?.Invoke();
         };
         
         targetT.TryGetComponent(out targetHealth);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        collider.enabled = true;
+        
+        if(other.gameObject.layer == 3)
+            AddRb();
     }
 
     private void Update()
@@ -140,6 +155,8 @@ public class ZombieAI : HealthBase
     
     public override void Died()
     {
+        AddRb();
+        
         DisableAnnoying();
         void DisableAnnoying()
         {
@@ -152,8 +169,32 @@ public class ZombieAI : HealthBase
                 onAnnoyedChange?.Invoke();
             }
         }
+
+        AudioPoolService.audioPoolServiceInstance.CastAudio(died);
         
         gameObject.layer = 8;
         Destroy(gameObject,30f);
+    }
+
+    private void AddRb()
+    {
+        if(zombieRb == null)
+            zombieRb = gameObject.AddComponent<Rigidbody>();
+
+        if (!isGargantua)
+            zombieRb.mass = 1;
+        else
+            zombieRb.mass = 6;
+        
+        zombieRb.drag = 2;
+        zombieRb.angularDrag = 0;
+        zombieRb.automaticInertiaTensor = true;
+
+        if (!isGargantua)
+            zombieRb.useGravity = false;
+        else
+            zombieRb.useGravity = true;
+        
+        zombieRb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
     }
 }

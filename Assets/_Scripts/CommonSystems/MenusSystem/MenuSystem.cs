@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class MenuSystem : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class MenuSystem : MonoBehaviour
     [SerializeField] private Animator menusChangeAnimation;
     [SerializeField] private bool useMenuChangeAnimation;
 
-    //private string menusPath;
+    private string menusPath;
     private readonly List<MenuData> menusDataPath = new List<MenuData>();
     
     [Space]
@@ -65,7 +64,7 @@ public class MenuSystem : MonoBehaviour
         if(isBackActionLock)
             return;
         
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             Back();
         }
@@ -182,7 +181,7 @@ public class MenuSystem : MonoBehaviour
         currentMenuData.menu.SetActive(true);
         currentMenuIsParent = true;
 
-        //UpdateMenuPath();
+        UpdateMenuPath();
         SetMenuSpecialSettings(currentMenuData);
         
         PlayMenuChangeAnimation();
@@ -190,6 +189,9 @@ public class MenuSystem : MonoBehaviour
 
     public void OpenStartMenu()
     {
+        menusPath = String.Empty;
+        menusDataPath.Clear();
+        
         ActivateMenu(startMenuData);
         currentMenuIsParent = true;
     }
@@ -200,7 +202,7 @@ public class MenuSystem : MonoBehaviour
         currentMenuData = menuData;
         menuData.menu.SetActive(true);
 
-        //menusPath += $"/{menuData.menuID}";
+        menusPath += $"/{menuData.menuID}";
         menusDataPath.Add(menuData);
 
         if(!simpleMod)
@@ -208,11 +210,41 @@ public class MenuSystem : MonoBehaviour
         
         SetMenuSpecialSettings(menuData);
 
-        //UpdateMenuPath();
+        UpdateMenuPath();
         
         PlayMenuChangeAnimation();
     }
+    
+    public void ActivateMenu(string id)
+    {
+        var menuData = FindData();
+        MenuData FindData()
+        {
+            var targetMenu = FindLocalChildMenu(startMenuData, id);
 
+            if (targetMenu != null)
+                return targetMenu;
+
+            throw new Exception();
+        }
+        
+        CloseAllMenus();
+        currentMenuData = menuData;
+        menuData.menu.SetActive(true);
+
+        menusPath += $"/{menuData.menuID}";
+        menusDataPath.Add(menuData);
+
+        if(!simpleMod)
+            menuData.menu.GetComponent<Canvas>().planeDistance = 0.075f;
+        
+        SetMenuSpecialSettings(menuData);
+
+        UpdateMenuPath();
+        
+        PlayMenuChangeAnimation();
+    }
+    
     private ParentMenuData FindLocalParentMenu(ParentMenuData parentMenu, string toFindMenuID)
     {
         return parentMenu.childsParentsMenusData.FirstOrDefault(item => item.menuID == toFindMenuID);
@@ -223,7 +255,7 @@ public class MenuSystem : MonoBehaviour
         return parentMenu.childsMenusData.FirstOrDefault(item => item.menuID == toFindMenuID);
     }
 
-    /*private void UpdateMenuPath()
+    private void UpdateMenuPath()
     {
         menusPath = "";
 
@@ -231,7 +263,7 @@ public class MenuSystem : MonoBehaviour
         {
             menusPath += $"{item.menuID}/";
         }
-    }*/
+    }
 
     private void SetMenuSpecialSettings(MenuData menuData)
     {

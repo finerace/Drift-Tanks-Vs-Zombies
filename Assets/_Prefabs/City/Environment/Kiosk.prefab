@@ -4999,8 +4999,6 @@ GameObject:
   - component: {fileID: 3318195989096145892}
   - component: {fileID: 2982878412219284175}
   - component: {fileID: 7100469848577232003}
-  - component: {fileID: -5929017890204059975}
-  - component: {fileID: 556629401530774439}
   m_Layer: 1
   m_Name: Kiosk
   m_TagString: Untagged
@@ -5041,8 +5039,11 @@ MonoBehaviour:
   graphic: {fileID: 1528721340463107870}
   destroyEffect: {fileID: 322127975165133226}
   destroyTime: 5
-  joint: {fileID: 0}
   afterDestroyPhysicOnTime: 0
+  mass: 0
+  drag: 0
+  massCenter: {x: 0, y: 0, z: 0}
+  boxCollider: {fileID: 0}
 --- !u!65 &7100469848577232003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5064,37 +5065,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.71, y: 0.65, z: 0.69}
   m_Center: {x: 0, y: 0.31, z: 0}
---- !u!114 &-5929017890204059975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6544654565507037494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169f661e48cbd3e46a2cc041010e4c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 2982878412219284175}
-  scoreType: 0
-  scoreValue: 20
---- !u!114 &556629401530774439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6544654565507037494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e61822c608cc4e8bc3419a5aa5fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetHealth: {fileID: 2982878412219284175}
-  moneyAddChance: 0
-  moneyAdd: 0
-  donateMoneyAddChance: 0
-  donateMoneyAdd: 0
-  xpAddChance: 1000
-  XpAdd: 15

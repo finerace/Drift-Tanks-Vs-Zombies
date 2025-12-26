@@ -5167,8 +5167,6 @@ GameObject:
   - component: {fileID: 3106262585080443587}
   - component: {fileID: 1631619150544629618}
   - component: {fileID: 8271142135007920899}
-  - component: {fileID: 8870360792303615882}
-  - component: {fileID: -8117428135740876384}
   m_Layer: 1
   m_Name: CafeTable
   m_TagString: Untagged
@@ -5209,8 +5207,11 @@ MonoBehaviour:
   graphic: {fileID: 4042374167313943021}
   destroyEffect: {fileID: 5549655139008812013}
   destroyTime: 5
-  joint: {fileID: 0}
   afterDestroyPhysicOnTime: 0
+  mass: 0
+  drag: 0
+  massCenter: {x: 0, y: 0, z: 0}
+  boxCollider: {fileID: 0}
 --- !u!65 &8271142135007920899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5232,37 +5233,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6365432, y: 0.3479186, z: 0.67664135}
   m_Center: {x: -0.09126277, y: 0.1681853, z: -0.111234635}
---- !u!114 &8870360792303615882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6609307102556659783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169f661e48cbd3e46a2cc041010e4c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1631619150544629618}
-  scoreType: 0
-  scoreValue: 10
---- !u!114 &-8117428135740876384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6609307102556659783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e61822c608cc4e8bc3419a5aa5fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetHealth: {fileID: 1631619150544629618}
-  moneyAddChance: 0
-  moneyAdd: 0
-  donateMoneyAddChance: 0
-  donateMoneyAdd: 0
-  xpAddChance: 1000
-  XpAdd: 5

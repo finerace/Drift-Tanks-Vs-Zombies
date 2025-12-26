@@ -1,32 +1,44 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DestructibleEnvironment : HealthBase
 {
     [SerializeField] private GameObject graphic;
     [SerializeField] private ParticleSystem destroyEffect;
     [SerializeField] private float destroyTime = 5;
-    [SerializeField] private Rigidbody joint;
     [SerializeField] private float afterDestroyPhysicOnTime = 0;
     private bool isDestroy;
-    
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (!isDestroy && collision.gameObject.TryGetComponent(out PlayerTank player))
-    //         StartDestroy();
-    // }
-    //
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (!isDestroy && other.gameObject.TryGetComponent(out PlayerTank player))
-    //         StartDestroy();
-    // }
 
-    private void Start()
+    [Space] 
+    
+    [SerializeField] private float mass;
+    [SerializeField] private float drag;
+    [SerializeField] private Vector3 massCenter;
+    [SerializeField] private BoxCollider boxCollider;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(joint != null)
-            joint.transform.parent = transform.parent;
+        if (!isDestroy && other.gameObject.layer == 3)
+        {
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+
+            rb.mass = mass;
+            rb.drag = drag;
+            rb.angularDrag = drag;
+            rb.centerOfMass = massCenter;
+            
+            if(other.gameObject.TryGetComponent(out Rigidbody playerRb))
+                rb.velocity = -playerRb.velocity/2;
+            
+            if(boxCollider != null)
+                boxCollider.enabled = true;
+            
+            gameObject.layer = 1;
+            
+            StartDestroy();
+        }
     }
 
     private void StartDestroy()
@@ -56,15 +68,29 @@ public class DestructibleEnvironment : HealthBase
         
         if(graphic != null)
             Destroy(graphic);
-        
-        if(joint != null)
-            Destroy(joint.gameObject);
-        
+
         Destroy(gameObject,destroyTime);
     }
 
     public override void Died()
     {
+        Rigidbody rb = null;
+        
+        if(!gameObject.TryGetComponent<Rigidbody>(out Rigidbody d))
+            rb = gameObject.AddComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.mass = mass;
+            rb.drag = drag;
+            rb.angularDrag = drag;
+            rb.centerOfMass = massCenter;
+        }
+        
+        if(boxCollider != null)
+            boxCollider.enabled = true;
+        gameObject.layer = 1;
+        
         StartDestroy();
     }
 
@@ -72,26 +98,17 @@ public class DestructibleEnvironment : HealthBase
     {
         if(graphic != null)
             Destroy(graphic);
-        
-        if(joint != null)
-            Destroy(joint.gameObject);
     }
 
     private void OnEnable()
     {
         if(graphic != null)
             graphic.SetActive(true);
-        
-        if(joint != null)
-            joint.gameObject.SetActive(true);
     }
     
     private void OnDisable()
     {
         if(graphic != null)
             graphic.SetActive(false);
-
-        if (joint != null)
-            joint.gameObject.SetActive(false);
     }
 }

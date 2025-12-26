@@ -53,11 +53,11 @@ MonoBehaviour:
   - 6
   fuelUpgradePrices: 0a0000000f000000140000001900000032000000
   fuelParam1PerLevel:
-  - 250
-  - 275
-  - 300
-  - 325
   - 350
+  - 350
+  - 350
+  - 375
+  - 400
   manageChar: 0.265
   gunChar: 0.088
   speedChar: 0.112

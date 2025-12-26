@@ -17,6 +17,11 @@ public class SimpleUiAnimation : MonoBehaviour,IPointerEnterHandler,IPointerExit
     [SerializeField] private float downElementsMultiplier;
     [SerializeField] private float animationTime;
 
+    [Space] 
+    
+    [SerializeField] private AudioCastData buttonDown;
+    [SerializeField] private AudioCastData buttonUp;
+
     private void Awake()
     {
         WriteDefaultScales();
@@ -46,12 +51,16 @@ public class SimpleUiAnimation : MonoBehaviour,IPointerEnterHandler,IPointerExit
     {
         MoveElements(upElements,defaultScalesUpElements,upElementsMultiplier);
         MoveElements(downElements,defaultScalesDownElements,downElementsMultiplier);
+        
+        AudioPoolService.audioPoolServiceInstance.CastAudio(buttonUp);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         MoveElements(upElements,defaultScalesUpElements,downElementsMultiplier);
         MoveElements(downElements,defaultScalesDownElements,upElementsMultiplier);
+        
+        AudioPoolService.audioPoolServiceInstance.CastAudio(buttonDown);
     }
 
     private void MoveElements(Transform[] elements, Vector3[] defaultScales, float power)

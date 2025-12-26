@@ -410,11 +410,9 @@ GameObject:
   m_Component:
   - component: {fileID: 604150794339260880}
   - component: {fileID: 6247121064562361540}
-  - component: {fileID: 7538701122922831456}
   - component: {fileID: 328203934102423628}
   - component: {fileID: 2651174045124903448}
-  - component: {fileID: -1615890472494451105}
-  - component: {fileID: 3500457677162952301}
+  - component: {fileID: 2513948774213396430}
   m_Layer: 6
   m_Name: Zombie
   m_TagString: Untagged
@@ -431,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 4527512241517263418}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 26.22, y: 0.54, z: 6.09}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -455,39 +453,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.3
   m_Height: 1.43
   m_Direction: 1
   m_Center: {x: -0.05, y: 0.687, z: 0}
---- !u!54 &7538701122922831456
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527512241517263418}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 2
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &328203934102423628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,18 +471,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6adfeedf27761f64f9fe4a7040fcd0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
-  maxHealth: 15
+  health: 25
+  maxHealth: 25
   zombieT: {fileID: 604150794339260880}
-  zombieRb: {fileID: 7538701122922831456}
-  damage: 2
+  zombieRb: {fileID: 0}
+  damage: 3
   attackDistance: 4
   attackCooldown: 2.5
   speed: 3
   rotationSpeed: 1.5
   targetT: {fileID: 0}
-  lookTargetDistance: 15
+  lookTargetDistance: 5
   lookTargetDotFov: 0.5
+  isGargantua: 0
+  collider: {fileID: 6247121064562361540}
+  died:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: cd33a97874179754eab34d3b0bb67fa0, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 604150794339260880}
+    priority: 2
+    volumeMin: 0.968
+    volumeMax: 1
+    isLoop: 0
+    pitchMin: 0.91
+    pitchMax: 1.04
+    stereoPan: 0
+    spatialBlend: 0.118
+    minDistance: 32
+    maxDistance: 64
 --- !u!114 &2651174045124903448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,43 +514,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieAI: {fileID: 328203934102423628}
-  zombieRb: {fileID: 7538701122922831456}
   zombieMeshAnimator: {fileID: 5972125118818052908}
   toFlyModOnPower: 10
---- !u!114 &-1615890472494451105
-MonoBehaviour:
+--- !u!65 &2513948774213396430
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4527512241517263418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169f661e48cbd3e46a2cc041010e4c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 328203934102423628}
-  scoreType: 1
-  scoreValue: 20
---- !u!114 &3500457677162952301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527512241517263418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1e61822c608cc4e8bc3419a5aa5fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetHealth: {fileID: 328203934102423628}
-  moneyAddChance: 250
-  moneyAdd: 5
-  donateMoneyAddChance: 1
-  donateMoneyAdd: 1
-  xpAddChance: 1000
-  XpAdd: 25
+  serializedVersion: 3
+  m_Size: {x: 0.99999976, y: 1.9380312, z: 0.99999976}
+  m_Center: {x: 0, y: 0.46901622, z: 0}
 --- !u!1 &5230366289137477954
 GameObject:
   m_ObjectHideFlags: 0

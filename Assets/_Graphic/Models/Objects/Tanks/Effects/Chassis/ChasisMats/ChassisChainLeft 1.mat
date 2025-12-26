@@ -134,7 +134,7 @@ Material:
     - _Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LineMovement: {r: 0, g: 97119.984, b: 0, a: 0}
+    - _LineMovement: {r: 0, g: 199139.62, b: 0, a: 0}
     - _MovementVector: {r: 0, g: 0.1, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}

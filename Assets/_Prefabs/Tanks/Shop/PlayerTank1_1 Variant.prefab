@@ -58,6 +58,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2396018442984485055, guid: 35992d7b4fa8ca54f8a340966c0d4780,
+        type: 3}
+      propertyPath: tankMain
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396018442984485055, guid: 35992d7b4fa8ca54f8a340966c0d4780,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3000869498893988199, guid: 35992d7b4fa8ca54f8a340966c0d4780,
         type: 3}
       propertyPath: tankRb
@@ -77,6 +87,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tankRb
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013414310939259868, guid: 35992d7b4fa8ca54f8a340966c0d4780,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5558478936653731770, guid: 35992d7b4fa8ca54f8a340966c0d4780,
         type: 3}

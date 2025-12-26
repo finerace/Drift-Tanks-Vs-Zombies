@@ -227,6 +227,38 @@ MonoBehaviour:
   upElementsMultiplier: 1
   downElementsMultiplier: 0.975
   animationTime: 0.075
+  buttonDown:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 1.1
+    pitchMax: 1.125
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
+  buttonUp:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 0.65
+    pitchMax: 0.68
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
 --- !u!1 &543601644975305803
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +878,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.75
+  m_fontSize: 67.65
   m_fontSizeBase: 96.51
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1040,6 +1072,38 @@ MonoBehaviour:
   upElementsMultiplier: 1
   downElementsMultiplier: 0.975
   animationTime: 0.075
+  buttonDown:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 1.1
+    pitchMax: 1.125
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
+  buttonUp:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 0.65
+    pitchMax: 0.68
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
 --- !u!1 &1720616705995405076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1855,38 @@ MonoBehaviour:
   upElementsMultiplier: 1
   downElementsMultiplier: 0.975
   animationTime: 0.075
+  buttonDown:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 1.1
+    pitchMax: 1.125
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
+  buttonUp:
+    audioMixerGroup: {fileID: 24300002, guid: 5ff6d33d8a74fd34db37a3f8c1e1a589, type: 2}
+    clips:
+    - {fileID: 8300000, guid: 05ff34f141f4ad24da121dd925231092, type: 3}
+    castPos: {x: 0, y: 0, z: 0}
+    castParent: {fileID: 0}
+    priority: 5
+    volumeMin: 0.6
+    volumeMax: 0.6
+    isLoop: 0
+    pitchMin: 0.65
+    pitchMax: 0.68
+    stereoPan: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
 --- !u!1 &2714326876687848120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1980,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.3
+  m_fontSize: 73.35
   m_fontSizeBase: 96.51
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2527,7 +2623,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.5
+  m_fontSize: 32.45
   m_fontSizeBase: 29.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2738,7 +2834,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.75
+  m_fontSize: 56.65
   m_fontSizeBase: 96.51
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3044,8 +3140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.952576, y: 476.95}
-  m_SizeDelta: {x: 21.905, y: 372.1301}
+  m_AnchoredPosition: {x: 10.952576, y: 373.5573}
+  m_SizeDelta: {x: 21.905, y: 165.3447}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6703516703359720405
 CanvasRenderer:
@@ -3510,7 +3606,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.75
+  m_fontSize: 56.65
   m_fontSizeBase: 96.51
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4138,7 +4234,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.75
+  m_fontSize: 56.65
   m_fontSizeBase: 96.51
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5154,7 +5250,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 57.5
   m_fontSizeBase: 96.51
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6906,6 +7002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035032815229157449, guid: 55a408dd37569db4abb2a8a26de7425b,
+        type: 3}
+      propertyPath: isEnabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
